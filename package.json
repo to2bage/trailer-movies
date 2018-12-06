@@ -19,7 +19,9 @@
   },
   "devDependencies": {
     "mongoose": "^5.3.14",
+    "nanoid": "^2.0.0",
     "puppeteer": "^1.11.0",
+    "qiniu": "^7.2.1",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.5"
   }
