@@ -11,11 +11,9 @@ const { connect, initSchemas } = require("./database/init.js");
 ;(async () => {
     await connect();
     initSchemas();
-    // 以下是测试
-    // const Movie = mongoose.model("Movie");
-    // const movies = await Movie.find({});
-    // console.log(movies);
-    require("./tasks/movie.js");
+    
+    // require("./tasks/movie.js");     // 爬取初步的数据, 并写入数据库
+    require("./tasks/api.js");          // 获取电影api, 并完善movie数据, 并写入数据库
 })();
 
 const app = new Koa();
