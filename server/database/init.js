@@ -1,4 +1,6 @@
 const mongoose = require("mongoose");
+const glob = require("glob");
+const { resolve } = require("path");
 const url = `mongodb://47.91.156.189:27017/douban-trailer`
 mongoose.Promise = global.Promise;
 
@@ -41,3 +43,9 @@ exports.connect = () => {
         })
     })
 }
+
+exports.initSchemas = () => {
+    glob.sync(resolve(__dirname, "./schema/", "**/*.js")).forEach(ele => {
+        require(ele);
+    });
+};
