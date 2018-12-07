@@ -22,3 +22,27 @@ const { resolve } = require("path");
         console.log(result);
     })
 })();
+
+
+/*
+    [
+        {
+            doubanId: '27110296',
+            title: '无名之辈',
+            rate: 8.2,
+            poster: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2539661066.jpg'
+        },
+        {
+            doubanId: '3168101',
+            title: '毒液：致命守护者',
+            rate: 7.3,
+            poster: 'https://img3.doubanio.com/view/photo/s_ratio_poster/public/p2537158013.jpg'
+        },
+        {
+            doubanId: '27605698',
+            title: '西虹市首富',
+            rate: 6.6,
+            poster: 'https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2529206747.jpg'
+        },
+    ]    
+*/
