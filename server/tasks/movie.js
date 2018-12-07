@@ -1,5 +1,8 @@
+const mongoose = require("mongoose");
 const childProcess = require("child_process");
 const { resolve } = require("path");
+// const { Movie } = require("../database/schema/movie.js");
+const Movie = mongoose.model("Movie");
 
 ;(async () => {
     const script = resolve(__dirname, "../crawler/trailer-list.js");
@@ -19,7 +22,17 @@ const { resolve } = require("path");
     });
     child.on("message", data => {
         let result = data.result;
-        console.log(result);
+        // console.log(result);
+        // 存入数据库
+        result.forEach(async item => {
+            // 判断当前的doubanId是否被存储过
+            let movie = await Movie.findOne({doubanId: item.doubanId})
+            if (!movie) {
+                // 如果该doubanId没有被存过, 就创建一条数据
+                movie = new Movie(item);
+                await movie.save();
+            }
+        });
     })
 })();
 

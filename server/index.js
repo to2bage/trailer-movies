@@ -12,9 +12,10 @@ const { connect, initSchemas } = require("./database/init.js");
     await connect();
     initSchemas();
     // 以下是测试
-    const Movie = mongoose.model("Movie");
-    const movies = await Movie.find({});
-    console.log(movies);
+    // const Movie = mongoose.model("Movie");
+    // const movies = await Movie.find({});
+    // console.log(movies);
+    require("./tasks/movie.js");
 })();
 
 const app = new Koa();

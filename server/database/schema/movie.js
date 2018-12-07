@@ -3,10 +3,10 @@ const movieSchema = new mongoose.Schema({
     doubanId: {
         type: String        // 豆瓣ID
     },
-    category: {             // 电影所属的分类
+    category: [{             // 电影所属的分类
         type: mongoose.Schema.Types.ObjectId,
         ref: "Category"
-    },
+    }],
     rate: Number,           // 豆瓣评分
     title: String,          // 电影的名字
     summary: String,        // 电影简介
@@ -33,7 +33,7 @@ const movieSchema = new mongoose.Schema({
     }
 });
 
-movieSchema.pre("save", next => {
+movieSchema.pre("save", function (next) {
     if (this.isNew) {
         this.meta.createdAt = this.meta.updatedAt = Date.now();
     } else {
